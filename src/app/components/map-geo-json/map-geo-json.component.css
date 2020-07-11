@@ -1,5 +1,5 @@
 
-#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%}
 
 #menu {
     background: #fff;
@@ -41,4 +41,9 @@
     
 #menu a.active:hover {
     background: #3074a4;
+}
+
+.mapboxgl-popup {
+    max-width: 400px;
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }

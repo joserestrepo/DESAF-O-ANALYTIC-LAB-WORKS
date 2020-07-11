@@ -1,3 +1,22 @@
-<p>
-  graphics works!
-</p>
+<div class="container mt-2 mb-4">
+    <ul class="nav nav-tabs">
+        <li class="nav-item" *ngFor="let tab of listTabs; index as i">
+            <a  class="nav-link active" [ngClass]="{'active':tab.visible}" role="button" (click)="changeTab(i)">{{tab.title}}</a>
+        </li>
+    </ul>
+    <div class="mt-3" *ngIf="listTabs[0].visible">
+        <p class="text-center"><strong>Total ventas: {{format_number(totalSalesCommerce())}}</strong></p>  
+        <app-graph-pie [nameCommerces]="listCommercesName" [saleCommerces]="listCommercesSales"></app-graph-pie>
+    </div>
+    <div class="mt-3" *ngIf="listTabs[1].visible">
+        <p class="text-center"><strong>Total ventas: {{format_number(totalSalesCommerce())}}</strong></p>  
+        <app-graph-bar [listCommerce]="listCommerce"></app-graph-bar>
+    </div>
+    <div class="mt-3" *ngIf="listTabs[2].visible">
+        <p class="text-center"><strong>Total ventas: {{format_number(totalSalesCommerce())}}</strong></p>  
+        <app-graph-polar-area [nameCommerces]="listCommercesName" [saleCommerces]="listCommercesSales"></app-graph-polar-area>
+    </div>
+    
+</div>
+
+<ngx-spinner></ngx-spinner>

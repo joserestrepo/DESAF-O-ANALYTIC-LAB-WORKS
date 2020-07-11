@@ -1,0 +1,10 @@
+<div style="display: block">
+  <canvas baseChart
+    [datasets]="listCommerce != null? listCommerce:[]"
+    [labels]="barChartLabels"
+    [options]="barChartOptions"
+    [plugins]="barChartPlugins"
+    [legend]="barChartLegend"
+    [chartType]="barChartType">
+  </canvas>
+</div>

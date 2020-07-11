@@ -1,0 +1,14 @@
+
+<div>
+  <div class="chart">
+    <canvas baseChart
+      [data]="saleCommerces != null? saleCommerces:[]"
+      [labels]="nameCommerces != null? nameCommerces:[]"
+      [chartType]="pieChartType"
+      [options]="pieChartOptions"
+      [plugins]="pieChartPlugins"
+      [colors]="pieChartColors"
+      [legend]="pieChartLegend">
+    </canvas>
+  </div>
+</div>
