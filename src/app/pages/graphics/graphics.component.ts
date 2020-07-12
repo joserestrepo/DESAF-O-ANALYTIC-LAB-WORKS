@@ -14,22 +14,30 @@ import { Tab } from 'src/app/class/tab';
 export class GraphicsComponent implements OnInit {
 
   listCommercesName: string[];
+  listCommercesNameTop3: string[] = [];
   listCommercesSales: number[];
-  listCommerce: Object[];
+  listCommercesSalesTop3: number[] = [];
+  listCommerce: any[];
   listTabs: Tab[];
 
 
   constructor(private commerceService: CommerceService, private spinner: NgxSpinnerService) { }
 
+  /**
+   * Se hace un llamado a las funciones para inicializar las variables con los datos de las graficas
+   */
   ngOnInit() {
     this.spinner.show();
     this.initDataGraph();
     this.initTabs();
   }
-
+  /**
+   * Inicializamos las listas con los datos necesarios para las graficas
+   */
   initDataGraph() {
     this.commerceService.getDataGraph()
     .subscribe((data: Commerce[])  => {
+
       this.listCommercesName = data.map(commerce => {
         return commerce.name;
       });
@@ -43,10 +51,15 @@ export class GraphicsComponent implements OnInit {
           label: commerce.name
         });
       });
+
+      this.top3Commerces();
       this.spinner.hide();
     });
   }
 
+  /**
+   * Se inicializan los tabs que se van usar en la vista
+   */
   initTabs() {
     this.listTabs = [
       {
@@ -64,14 +77,39 @@ export class GraphicsComponent implements OnInit {
     ];
   }
 
+  /**
+   * Se calcula el total de ventas de los comercios
+   */
   totalSalesCommerce() {
     return this.listCommercesSales !== undefined ? this.listCommercesSales.reduce((a, b) => a + b) : 0;
   }
 
+/**
+ * Ordenamos la lista de mayor a menor venta y sacamos los 3 primeros.
+ */
+  top3Commerces() {
+    let listSort = Object.assign([], this.listCommerce);
+    listSort.sort((a, b) => {
+      return (b.data[0] - a.data[0]);
+    });
+    listSort = listSort.splice(0 , 3);
+    listSort.forEach(item => {
+      this.listCommercesNameTop3.push(item.label);
+      this.listCommercesSalesTop3.push(item.data[0]);
+    });
+  }
+
+  /**
+   * Formatiamos los numeros de enteros a miles
+   */
   format_number(x: string) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
   }
 
+
+  /**
+   * Controlador de cambios de los tabs de la vista
+   */
   changeTab(index: number) {
     this.listTabs.map((tab, i) => {
       if (i === index) {

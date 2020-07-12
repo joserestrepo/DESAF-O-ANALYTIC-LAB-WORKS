@@ -1,6 +1,6 @@
 <div style="display: block">
   <canvas baseChart
-    [datasets]="listCommerce != null? listCommerce:[]"
+    [datasets]="listCommerce != undefined? listCommerce : []"
     [labels]="barChartLabels"
     [options]="barChartOptions"
     [plugins]="barChartPlugins"

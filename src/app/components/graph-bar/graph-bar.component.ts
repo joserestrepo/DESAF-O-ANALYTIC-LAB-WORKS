@@ -9,14 +9,24 @@ import { Label } from 'ng2-charts';
   styleUrls: ['./graph-bar.component.css']
 })
 export class GraphBarComponent implements OnInit {
-  @Input() listCommerce: Object[];
+  /**
+   * Recibimos una lista de objeto el cual cuenta con la siguiente estructura
+   * {
+   *  data: number,
+   *  label: string
+   * }
+   * son los datos que utilizamos para mostrar el grafico
+   */
+  @Input() listCommerce: any[];
 
+  /**
+   * Configuracion necesario para mostrar la grafica
+   */
   public barChartOptions: ChartOptions = {
     responsive: true,
     legend: {
       position: 'bottom',
     },
-    // We use these empty structures as placeholders for dynamic theming.
     scales: { xAxes: [{}], yAxes: [{}] },
     plugins: {
       datalabels: {

@@ -15,13 +15,17 @@ import { PropertiesCommerce } from 'src/app/class/properties-commerce';
 })
 export class MapGeoJSONComponent implements OnInit {
   @Input() urlData: string;
-  title = 'mapboxApp';
   map: Mapboxgl.Map;
+
+
   ngOnInit() {
     this.inicializarMap();
     this.inicializarGeoJson();
   }
 
+  /**
+   * Montamos el mapa dandole las configuraciones principales
+   */
   inicializarMap() {
     (Mapboxgl.accessToken as any ) = environment.mapboxKey;
 
@@ -33,6 +37,9 @@ export class MapGeoJSONComponent implements OnInit {
     });
   }
 
+  /**
+   * Cargamos los datos GeoJSON al mapa y configuramos para cuando le den click al punto se muestre un modal con la informacion del comercio
+   */
   inicializarGeoJson() {
     this.map.on('load', () => {
       this.map.addSource('datacommerces', {
@@ -71,6 +78,9 @@ export class MapGeoJSONComponent implements OnInit {
     });
   }
 
+  /**
+   * Template para mostrar la informacion de los puntos del mapa
+   */
   templatePopUpLayer(commerce: PropertiesCommerce) {
     return(`
       <div class="card-body">

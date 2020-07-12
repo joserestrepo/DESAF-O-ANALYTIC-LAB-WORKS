@@ -1,26 +1,34 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ChartType, ChartOptions } from 'chart.js';
+import { ChartType, ChartOptions, PositionType } from 'chart.js';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
-import { Label } from 'ng2-charts';
 @Component({
   selector: 'app-graph-pie',
   templateUrl: './graph-pie.component.html',
   styleUrls: ['./graph-pie.component.css']
 })
 export class GraphPieComponent implements OnInit {
+  /**
+   * Recibimos el listado de nombres de los comercios que sera nuestro label y la cantidad de venta de cada comercio
+   * para mostrarlo en la grafica
+   */
   @Input() nameCommerces: string[];
   @Input() saleCommerces: number[];
 
+
+  /**
+   * Configuracion necesario para mostrar la grafica
+   */
   public pieChartOptions: ChartOptions = {
     responsive: true,
     legend: {
-      position: 'bottom',
+      position: 'right',
     },
     plugins: {
       datalabels: {
         formatter: (value, ctx) => {
-          const label = ctx.chart.data.labels[ctx.dataIndex];
-          return label;
+          let total = 0;
+          ctx.chart.data.datasets[0].data.forEach( item => total += item );
+          return `${((value / total) * 100).toFixed(2)}%`;
         },
       },
     }
