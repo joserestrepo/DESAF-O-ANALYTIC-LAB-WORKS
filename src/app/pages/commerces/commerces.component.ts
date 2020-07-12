@@ -2,9 +2,10 @@
 import { Component, OnInit } from '@angular/core';
 // services
 import { CommerceService } from 'src/app/services/commerce.service';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 //class
 import { PropertiesCommerce } from './../../class/properties-commerce';
+
 
 @Component({
   selector: 'app-commerces',
@@ -17,9 +18,10 @@ export class CommercesComponent implements OnInit {
   fullListCommerces: PropertiesCommerce[];
 
 
-  constructor( private commerceService: CommerceService) { }
+  constructor( private commerceService: CommerceService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
+    this.spinner.show();
     this.initiListCommerces();
   }
 
@@ -31,7 +33,7 @@ export class CommercesComponent implements OnInit {
     .subscribe((data: PropertiesCommerce[]) => {
       this.listCommerces = Object.assign([], data);
       this.fullListCommerces = Object.assign([], data);
-
+      this.spinner.hide();
     });
   }
 

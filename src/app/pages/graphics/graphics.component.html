@@ -8,7 +8,7 @@
             <div class="card shadow py-5 h-100">
                 <div class="card-body text-center">
                     <h6 class="card-subtitle mb-2 text-muted">{{listCommercesNameTop3[0] != undefined ? listCommercesNameTop3[0] : ''}}</h6>
-                    <h1 class="card-title text-success">{{this.format_number(listCommercesSalesTop3[0] != undefined ? listCommercesSalesTop3[0] : '')}}</h1>
+                    <h1 class="card-title text-success">{{tools.format_number(listCommercesSalesTop3[0] != undefined ? listCommercesSalesTop3[0] : '')}}</h1>
                     <h6 class="card-subtitle mb-2 text-muted">Comercio con más ventas</h6>
                   </div>
             </div>
@@ -16,7 +16,7 @@
         <div class="col-4">
             <div class="card shadow py-5 h-100">
                 <div class="card-body text-center">
-                    <h1 class="card-title text-primary mt-3">{{format_number(totalSalesCommerce())}}</h1>
+                    <h1 class="card-title text-primary mt-3">{{tools.format_number(totalSalesCommerce())}}</h1>
                     <h6 class="card-subtitle mb-2 text-muted">Total ventas</h6>
                   </div>
             </div>

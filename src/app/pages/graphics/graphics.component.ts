@@ -7,7 +7,7 @@ import { Commerce } from 'src/app/class/commerce';
 import { Tab } from 'src/app/class/tab';
 
 // tools
-import { format_number } from './../../tools/tools';
+import { Tools } from './../../tools/tools';
 
 @Component({
   selector: 'app-graphics',
@@ -22,10 +22,12 @@ export class GraphicsComponent implements OnInit {
   listCommercesSalesTop3: number[] = [];
   listCommerce: any[];
   listTabs: Tab[];
-  format_number: Function = format_number;
+  tools: Tools;
 
 
-  constructor(private commerceService: CommerceService, private spinner: NgxSpinnerService) { }
+  constructor(private commerceService: CommerceService, private spinner: NgxSpinnerService) { 
+    this.tools = new Tools();
+  }
 
   /**
    * Se hace un llamado a las funciones para inicializar las variables con los datos de las graficas

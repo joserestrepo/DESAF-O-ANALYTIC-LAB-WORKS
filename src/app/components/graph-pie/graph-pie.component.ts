@@ -27,7 +27,7 @@ export class GraphPieComponent implements OnInit {
       datalabels: {
         formatter: (value, ctx) => {
           let total = 0;
-          ctx.chart.data.datasets[0].data.forEach( item => total += item );
+          this.saleCommerces.forEach( item => total += item );
           return `${((value / total) * 100).toFixed(2)}%`;
         },
       },
