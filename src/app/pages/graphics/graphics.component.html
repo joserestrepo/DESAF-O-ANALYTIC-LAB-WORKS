@@ -1,7 +1,7 @@
 <div class="container mt-2 mb-4">
     <div class="row">
         <div class="col-12 mt-2">
-            <h6>Graficos de comercios</h6>
+            <h6>Gráficos de comercios</h6>
             <hr>  
         </div>
         <div class="col-4">
@@ -9,7 +9,7 @@
                 <div class="card-body text-center">
                     <h6 class="card-subtitle mb-2 text-muted">{{listCommercesNameTop3[0] != undefined ? listCommercesNameTop3[0] : ''}}</h6>
                     <h1 class="card-title text-success">{{this.format_number(listCommercesSalesTop3[0] != undefined ? listCommercesSalesTop3[0] : '')}}</h1>
-                    <h6 class="card-subtitle mb-2 text-muted">Comercio con mas ventas</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">Comercio con más ventas</h6>
                   </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
         <div class="col-4">
             <div class="card shadow h-100">
                 <div class="card-body text-center">
-                    <h6 class="card-subtitle mb-2 text-muted">Top 3 con mas ventas</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">Top 3 con más ventas</h6>
                     <app-graph-pie [nameCommerces]="listCommercesNameTop3" [saleCommerces]="listCommercesSalesTop3" ></app-graph-pie>
                 </div>
             </div>

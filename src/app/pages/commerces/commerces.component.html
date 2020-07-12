@@ -1,3 +1,20 @@
-<p>
-  commerces works!
-</p>
+<div class="container my-3">
+  <div class="d-flex justify-content-between">
+    <h4>Listado de comercios</h4>
+    <div class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" (keyup)="buscador($event)" placeholder="Buscar comercio" aria-label="Search">
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div  class="col-4 my-2" *ngFor="let commerce of listCommerces;index as i">
+        <app-card-commerce [commerce]="commerce"></app-card-commerce>
+        <app-modal-commerce [commerce]="commerce"></app-modal-commerce>
+    </div>
+    <div *ngIf="listCommerces.length == 0">
+      <div class="col-12">
+        <div class="alert alert-info">No se han encontrado resultados</div>
+      </div>
+    </div>
+  </div>
+</div>

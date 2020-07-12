@@ -1,0 +1,19 @@
+<a role="button" data-toggle="modal" [attr.data-target]="'#exampleModal'+commerce.id" >
+  <div class="card hover-shadow">
+    <div class="card-body">
+      <h5 class="card-title">{{ commerce.name }}</h5>
+      <h6 class="card-subtitle text-muted">{{ commerce.owner }}</h6>
+      <hr>
+      <div class="d-flex justify-content-between">
+        <div class="card-body text-center p-0">
+          <h6 class="card-title m-0">{{commerce.phone}}</h6>
+          <sub class="card-subtitle text-muted m-0">Telefono</sub>
+        </div>
+        <div class="card-body text-center p-0">
+          <h6 class="card-title m-0">{{format_number(commerce.sales)}}</h6>
+          <sub class="card-subtitle text-muted m-0">Ventas</sub>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>

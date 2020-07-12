@@ -6,6 +6,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Commerce } from 'src/app/class/commerce';
 import { Tab } from 'src/app/class/tab';
 
+// tools
+import { format_number } from './../../tools/tools';
+
 @Component({
   selector: 'app-graphics',
   templateUrl: './graphics.component.html',
@@ -19,6 +22,7 @@ export class GraphicsComponent implements OnInit {
   listCommercesSalesTop3: number[] = [];
   listCommerce: any[];
   listTabs: Tab[];
+  format_number: Function = format_number;
 
 
   constructor(private commerceService: CommerceService, private spinner: NgxSpinnerService) { }
@@ -63,15 +67,15 @@ export class GraphicsComponent implements OnInit {
   initTabs() {
     this.listTabs = [
       {
-        title: 'Grafico de torta',
+        title: 'Gráfico de torta',
         visible: true
       },
       {
-        title: 'Grafico de barra',
+        title: 'Gráfico de barra',
         visible: false
       },
       {
-        title: 'Grafico de área polar',
+        title: 'Gráfico de área polar',
         visible: false
       }
     ];
@@ -97,13 +101,6 @@ export class GraphicsComponent implements OnInit {
       this.listCommercesNameTop3.push(item.label);
       this.listCommercesSalesTop3.push(item.data[0]);
     });
-  }
-
-  /**
-   * Formatiamos los numeros de enteros a miles
-   */
-  format_number(x: string) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
   }
 
 

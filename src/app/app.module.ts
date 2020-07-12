@@ -17,6 +17,8 @@ import { MapGeoJSONComponent } from './components/map-geo-json/map-geo-json.comp
 import { GraphPieComponent } from './components/graph-pie/graph-pie.component';
 import { GraphBarComponent } from './components/graph-bar/graph-bar.component';
 import { GraphPolarAreaComponent } from './components/graph-polar-area/graph-polar-area.component';
+import { CardCommerceComponent } from './components/card-commerce/card-commerce.component';
+import { ModalCommerceComponent } from './components/modal-commerce/modal-commerce.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { GraphPolarAreaComponent } from './components/graph-polar-area/graph-pol
     MapGeoJSONComponent,
     GraphPieComponent,
     GraphBarComponent,
-    GraphPolarAreaComponent
+    GraphPolarAreaComponent,
+    CardCommerceComponent,
+    ModalCommerceComponent
   ],
   imports: [
     BrowserModule,
