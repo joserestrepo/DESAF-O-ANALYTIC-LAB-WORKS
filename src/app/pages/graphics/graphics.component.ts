@@ -120,4 +120,8 @@ export class GraphicsComponent implements OnInit {
 
   }
 
+  toString(number: number){
+    return String(number);
+  }
+
 }
